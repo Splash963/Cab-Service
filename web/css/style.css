@@ -1,0 +1,341 @@
+body {
+    background-color: #131112;
+}
+
+/* Navbar */
+.nav-color {
+    color: #1d1f45;
+    
+}
+
+.head-logo{
+    width: clamp(4rem, 5vw, 6rem);
+    height: clamp(3rem, 4vw, 5rem);
+}
+
+@media (max-width: 768px) {
+    .nav-color {
+        color: white;
+    }
+
+    .nav-active-color {
+        background-color: #CCA713;
+    }
+
+
+}
+
+.nav-color:hover {
+    color: #F5C45E;
+}
+
+.active-color{
+    color: #CCA713;
+}
+
+.nav-background {
+    background-color: white;
+}
+
+.nav-active-color-2 {
+    color: #CCA713;
+}
+
+.nav-icon {
+    background-color: transparent;
+    border: none;
+}
+
+.main-img {
+    opacity: 100%;
+}
+
+.offcanvas.half-screen {
+    width: 60% !important;
+    max-width: none;
+    background-color: #222831;
+    opacity: 95%;
+}
+
+
+/* Contact Button */
+.contact-button {
+    cursor: pointer;
+    width: clamp(4.5rem, 4.5vw, 4.5rem);
+    height: clamp(5rem, 5vw, 8rem);
+}
+
+.extra-button-container {
+    position: fixed;
+    bottom: clamp(5.5rem, 6vw, 6rem);
+    right: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.2s ease;
+    pointer-events: none;
+    z-index: 1050;
+}
+
+.extra-button-container.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    z-index: 1050;
+}
+
+.contact-op-btn {
+    border-radius: 30px;
+}
+
+.op-btn1 {
+    background-color: #062F6B;
+    border: #062F6B;
+    width: clamp(6rem, 10vw, 10rem);
+    padding: 5px;
+    height: clamp(3rem, 3.4vw, 3.4vw);
+}
+
+.op-btn2 {
+    background-color: #249028;
+    border: #249028;
+    width: clamp(6rem, 10vw, 10rem);
+    height: clamp(3rem, 3.4vw, 3.4vw);
+    padding: 5px;
+}
+
+
+/* Head */
+.bg-marisi-yello {
+    background-color: #CCA713;
+}
+
+.main-title {
+    font-size: clamp(1.5rem, 3vw, 3rem);
+}
+
+.about-button {
+    background-color: #CCA713;
+    border-radius: 70px;
+    border: 2px solid #CCA713;
+    padding: clamp(0.5rem, 1vw, 1rem);
+    font-size: clamp(0.5rem, 1.5vw, 1.5rem);
+}
+
+.about-button:hover {
+    background-color: transparent;
+    color: #F2EED7;
+}
+
+.about-button {
+    transition-duration: 0.4s;
+}
+
+.fade-only {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.fade-only.visible {
+    opacity: 1;
+}
+
+
+/* Quick Service */
+.quick-button1 {
+    background-color: #249028;
+    border: 0;
+    font-family: sans-serif;
+    font-size: clamp(1.5rem, 2.5vw, 3rem);
+    width: clamp(20rem, 30vw, 40rem);
+    height: clamp(5rem, 8vw, 10rem);
+    color: white;
+    cursor: pointer;
+}
+
+.quick-button2 {
+    background-color: #062F6B;
+    border: 0;
+    font-family: sans-serif;
+    font-size: clamp(1.5rem, 2.5vw, 3rem);
+    /* Scales nicely with screen size */
+    width: clamp(20rem, 30vw, 40rem);
+    /* Reasonable range for button width */
+    height: clamp(5rem, 8vw, 10rem);
+    /* Adjusted for better button shape */
+    color: white;
+    /* Optional: ensures text is visible */
+    cursor: pointer;
+    /* Optional: makes it feel clickable */
+}
+
+.fs-7 {
+    font-size: 0.8rem;
+}
+
+.ca-button {
+    background-color: white;
+}
+
+
+.ptag {
+    opacity: 50%;
+}
+
+.titles {
+    color: #FEBA17;
+}
+
+
+/* Our Services Card */
+.services-card {
+    background-color: transparent;
+    border: 2px solid #CCA713;
+    width: clamp(20rem, 20vw, 20rem);
+    height: clamp(20rem, 20vw, 20rem);
+    border-radius: 20px;
+    padding: 0%;
+}
+
+.services-img {
+    width: clamp(10rem, 8vw, 15rem);
+    height: clamp(10rem, 8vw, 15rem);
+}
+
+.card-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #F2EED7;
+    font-size: clamp(1.5rem, 1.5vw, 1.5rem);
+}
+
+.card-description {
+    color: #F2EED7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1rem, 1vw, 1rem);
+}
+
+.slide-up {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: transform 0.7s ease-out, opacity 0.7s ease-out;
+}
+
+.slide-up.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Booking */
+.booking-card {
+    background-color: #131112;
+}
+
+.booking-image {
+    width: clamp(50rem, 250vw, 400rem);
+    height: clamp(16rem, 40vw, 100rem);
+    opacity: 50%;
+}
+
+.booking-text-title {
+    color: #F2EED7;
+    font-size: clamp(1rem, 2.5vw, 2.5rem);
+}
+
+.booking-text-description {
+    color: #F2EED7;
+    opacity: 50%;
+    font-size: clamp(0.6rem, 1.5vw, 1.5rem);
+}
+
+.Booking-button1 {
+    width: clamp(8rem, 25vw, 25rem);
+    height: clamp(2rem, 5vw, 5rem);
+    border: 0;
+    background-color: #FEBA17;
+}
+
+.Booking-button2 {
+    width: clamp(8rem, 25vw, 25rem);
+    height: clamp(2rem, 5vw, 5rem);
+    border: 0;
+    background-color: #249028;
+}
+
+.center-image {
+    justify-content: center;
+    align-items: center;
+}
+
+/* Comments */
+.review-card {
+    min-width: 300px;
+    min-height: 250px;
+    background-color: #F2EED7;
+    border-top-right-radius: 70px;
+    border-bottom-left-radius: 70px;
+}
+
+/* Booking2 */
+.booking-main {
+    background-color: #ffcd05;
+    padding: 50px;
+}
+
+.text-booking {
+    color: #131112;
+}
+
+.booking-btn {
+    background-color: #131112;
+    width: 300px;
+    height: 70px;
+    border: 0;
+    font-family: sans-serif;
+    font-size: x-large;
+    color: #F2EED7;
+}
+
+
+/* Footer */
+.footer-bg {
+    background-color: #233143;
+}
+
+.footer-links {
+    color: #F2EED7;
+    opacity: 20%;
+}
+
+.footer-links:hover {
+    color: #FEBA17;
+    opacity: 100%;
+    cursor: pointer;
+}
+
+.footer-social:hover {
+    cursor: pointer;
+}
+
+.footer-img {
+    width: 100%;
+    max-width: 100rem;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+    min-height: 1.7rem;
+}
+
+.footer-certification {
+    color: #eaeaea;
+    font-size: 0.875rem;
+}

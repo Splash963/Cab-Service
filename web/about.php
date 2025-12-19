@@ -11,49 +11,11 @@
 
 <body>
 
-    <!-- Navbars -->
-    <nav class="navbar navbar-expand-lg nav-background p-0 transparent-bg">
-        <div class="container-fluid d-flex justify-content-end">
-            <nav class="navbar p-0">
-                <div class="container-fluid p-0">
-                    <a class="navbar-brand" href="#">
-                        <img src="images/icons/Logo.png" class="head-logo" alt="Bootstrap">
-                        <span class="ms-2 fs-4 text-black">TaxiGeo.com</span>
-                    </a>
-                </div>
-            </nav>
-            <button class="navbar-toggler ms-auto nav-icon" type="button"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end half-screen" tabindex="-1"
-                id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1">
-                        <li class="nav-item pe-3">
-                            <a class="nav-link nav-color" href="index.php">Home</a>
-                        </li>
-                        <li class="nav-item pe-3">
-                            <a class="nav-link active-color" href="about.php">About</a>
-                        </li>
-                        <li class="nav-item pe-3">
-                            <a class="nav-link nav-color" href="contact.php">Contact</a>
-                        </li>
-                        <li class="nav-item pe-3">
-                            <a class="nav-link nav-color" href="booking.php">Booking</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- Navbar -->
+    <?php
+    $currentPage = 'about';
+    include 'layouts/navbar.php';
+    ?>
 
     <!-- Carousel -->
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
@@ -115,7 +77,7 @@
 
 
     <!-- Vehicles -->
-    <h2 class="mt-5 titles">Our Vehicles</h2>
+    <h2 class="mt-5 titles ps-2">Our Vehicles</h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 me-0">
 
         <div class="col mt-5 container slide-up">
@@ -192,7 +154,9 @@
             <div class="col">
                 <div class="col fade-only">
                     <p class="text-booking fs-1 fw-bold">Why Wait? Your Cab is Just One Click Away!</p>
-                    <button type="button" class="booking-btn rounded-pill fw-bold mt-5">Book Now</button>
+                    <a href="booking.php">
+                        <button type="button" class="booking-btn rounded-pill fw-bold mt-5">Book Now</button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -280,38 +244,7 @@
     </div>
 
     <!-- Footer -->
-    <!-- <img src="images/Footer/footer.png" class="footer-img mt-3" alt="..."> -->
-    <div class="footer-bg">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col">
-                    <img src="images/icons/Logo.png" class="img-fluid" style="width: 160px; height:150px" alt="...">
-                    <p class="fs-2 fw-semibold text-white">Ride Safe, Ride Smart.</p>
-                </div>
-                <div class="col">
-                    <p class="fs-4 fw-medium text-white mt-5">Links</p>
-                    <div class="">
-                        <p class="footer-links">About</p>
-                        <p class="footer-links">Get a Taxi</p>
-                        <p class="footer-links">Our Reviews</p>
-                        <p class="footer-links">Book a Taxi</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <p class="fs-4 fw-medium text-white mt-5">Contact Us</p>
-                    <div class="">
-                        <p class="footer-links">Phone</p>
-                        <p class="footer-links">Whatsapp</p>
-                        <p class="footer-links">Email</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <footer class="footer-certification text-center pb-3 pt-5">
-            <small>&copy; Taxi Geo <span id="year"></span> | All rights reserved</small>
-        </footer>
-    </div>
-    <img src="images/Footer/footer.png" class="footer-img" alt="...">
+    <?php include 'layouts/footer.php'; ?>
 
     <script>
         document.getElementById("year").textContent = new Date().getFullYear();

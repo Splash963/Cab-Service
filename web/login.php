@@ -19,7 +19,9 @@
                     <img src="images/icons/Logo.png" alt="Register">
                     <p class="fs-1 fw-semibold" style=" font-family: 'Poppins';">Welcome Back!</p>
                     <p style="text-align: center;">To Stay Connected With Us<br>Please Login With Your Personal Informations</p>
-                    <button type="submit" class="button-02 mt-5 mb-5 fw-semibold">Sign Up</button>
+                    <a href="register.php" style="width: 100%; display: flex; justify-content: center; text-decoration: none;">
+                        <button type="submit" class="button-02 mt-5 mb-5 fw-semibold">Sign Up</button>
+                    </a>
                 </div>
             </div>
             <div class="col-md-6 p-0">

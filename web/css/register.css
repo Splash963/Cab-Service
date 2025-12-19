@@ -52,9 +52,16 @@ label {
     color: white;
 }
 
+
+
 #email,
+#name,
+#nic,
+#number,
+#address,
+#age,
 #password {
-    width: 80%;
+    width: 70%;
     border-radius: 1rem;
     border: none;
     outline: none;

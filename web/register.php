@@ -4,30 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Registration</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/register.css">
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 </head>
 
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 p-0" style="background-color: #222831; border-radius: 0 0 0 12rem;">
+            <div class="col-md-6 p-0" style="background-color: black; border-radius: 0 0 0 12rem;">
                 <div class="col-12 left-col">
-                    <img src="images/icons/Logo.png" alt="Register">
-                    <p class="fs-1 fw-semibold" style=" font-family: 'Poppins';">Welcome Back!</p>
-                    <p style="text-align: center;">To Stay Connected With Us<br>Please Login With Your Personal Informations</p>
-                    <button type="submit" class="button-02 mt-5 mb-5 fw-semibold">Sign Up</button>
+                    <img src="images/register.png" alt="Register">
                 </div>
             </div>
             <div class="col-md-6 p-0">
                 <div class="col-12 right-col">
                     <div class="container from-details">
-                        <p class="text-white fs-1 fw-semibold">Welcome</p>
-                        <p class="text-white">Log into your account to continue</p>
-                        <form class="mt-5">
+                        <h2>Welcome Back</h2>
+                        <p>Log into your account to continue</p>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter name">
+                            </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" id="email" placeholder="Enter email">
@@ -36,7 +36,7 @@
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" id="password" placeholder="Enter password">
                             </div>
-                            <button type="submit" class="button-01 mt-5">Login</button>
+                            <button type="submit" class="btn btn-primary">Register</button>
                         </form>
                     </div>
                 </div>

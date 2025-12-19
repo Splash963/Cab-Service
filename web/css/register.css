@@ -1,0 +1,95 @@
+body {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to right, black, #ffbb34);
+}
+
+.container {
+    width: 80%;
+    height: 40rem;
+}
+
+.left-col {
+    height: 40rem;
+    border-radius: 0 12rem 0 12rem;
+    background-image: linear-gradient(to bottom, #FFC400, #CCA713);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-col {
+    height: 40rem;
+    border-radius: 0 12rem 0 0;
+    background-color: #222831;
+}
+
+.from-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    align-items: center;
+}
+
+label {
+    color: white;
+}
+
+#email,
+#password {
+    width: 80%;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+}
+
+.button-01 {
+    width: 50%;
+    background-color: transparent;
+    color: white;
+    border-radius: 5rem;
+    border: 2px solid #ffbb34;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    padding: 0.5rem;
+}
+
+.button-02 {
+    width: 40%;
+    background-color: transparent;
+    color: black;
+    border-radius: 5rem;
+    border: 3px solid #222831;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    padding: 0.5rem;
+}
+
+
+.button-01:hover,
+.button-02:hover {
+    border: 3px solid white;
+    color: white;
+}
+
+img {
+    width: auto;
+    height: 25rem;
+}

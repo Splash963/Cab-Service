@@ -12,7 +12,7 @@
 </head>
 
 <?php
-include 'functions.php';
+include '../web/functions/LoginFunctions.php';
 $functions = new loginController();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="container from-details">
                         <p class="text-white fs-1 fw-semibold">Welcome</p>
                         <p class="text-white">Log into your account to continue</p>
-                        <form class="mt-5" method="post" action="loginController.php">
+                        <form class="mt-5" method="post">
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">

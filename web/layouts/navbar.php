@@ -50,7 +50,7 @@
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <?php echo htmlspecialchars($_SESSION['user_name']); ?>
                             </a>
-                            <form action="logoutController.php" method="POST">
+                            <form action="../web/controller/LoginController.php" method="POST">
                                 <ul class="dropdown-menu">
                                     <li><button type="submit" name="logout" class="dropdown-item">Logout</button></li>
                                 </ul>

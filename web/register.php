@@ -12,7 +12,7 @@
 </head>
 
 <?php
-include 'registerController.php';
+include 'controller/LoginController.php';
 ?>
 
 <body>
@@ -33,7 +33,7 @@ include 'registerController.php';
                     <div class="container from-details">
                         <p class="text-white fs-1 fw-semibold">Welcome</p>
                         <p class="text-white">Please Register With Your Personal Informations</p>
-                        <form class="mt-5 overflow-y-scroll" style="height: 25rem; scrollbar-width: none;" method="post" action="registerController.php">
+                        <form class="mt-5 overflow-y-scroll" style="height: 25rem; scrollbar-width: none;" method="post" action="controller/LoginController.php">
                             <div class="form-group">
                                 <label for="name">Full Name</label>
                                 <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">

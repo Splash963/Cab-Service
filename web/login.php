@@ -34,7 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <p class="fs-1 fw-semibold" style=" font-family: 'Poppins';">Welcome Back!</p>
                     <p style="text-align: center;">To Stay Connected With Us<br>Please Login With Your Personal Informations</p>
                     <a href="register.php" style="width: 100%; display: flex; justify-content: center; text-decoration: none;">
-                        <button type="submit" class="button-02 mt-5 mb-5 fw-semibold">Sign Up</button>
+                        <button type="submit" class="button-02 mt-3 mb-1 fw-semibold">Sign Up</button>
+                    </a>
+                    <a href="index.php" style="width: 100%; display: flex; justify-content: center; text-decoration: none;">
+                        <button type="submit" class="button-02 mb-5 fw-semibold">Home</button>
                     </a>
                 </div>
             </div>
@@ -43,16 +46,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="container from-details">
                         <p class="text-white fs-1 fw-semibold">Welcome</p>
                         <p class="text-white">Log into your account to continue</p>
-                        <form class="mt-5" method="post">
+                        <form class="mt-5" method="post" style="height: auto;">
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" required>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+                                <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" required>
                             </div>
-                            <button type="submit" name="loginButton" class="button-01 mt-5">Login</button>
+                            <button type="submit" name="loginButton" class="button-01 mt-3">Login</button>
                         </form>
                     </div>
                 </div>

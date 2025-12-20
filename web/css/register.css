@@ -11,6 +11,16 @@ body {
     height: 40rem;
 }
 
+.column-1 {
+    background-color: #222831;
+    border-radius: 0 0 0 12rem;
+}
+
+.column-2 {
+    background-color: #222831;
+    border-radius: 0 12rem 0 0;
+}
+
 .left-col {
     height: 40rem;
     border-radius: 0 12rem 0 12rem;
@@ -46,6 +56,8 @@ form {
     flex-direction: column;
     gap: 2em;
     align-items: center;
+    height: 25rem;
+    scrollbar-width: none;
 }
 
 label {
@@ -99,4 +111,47 @@ label {
 img {
     width: auto;
     height: 25rem;
+}
+
+@media (max-width: 768px) {
+
+    body {
+        height: auto;
+    }
+
+    .container {
+        width: 100%;
+        height: auto;
+    }
+
+    img {
+        width: auto;
+        height: 15rem;
+    }
+
+    .left-col {
+        height: auto;
+        border-radius: 0 12rem 0 0;
+    }
+
+    .right-col {
+        height: auto;
+        border-radius: 0;
+        padding: 5%;
+    }
+
+    form {
+        height: auto;
+        padding-bottom: 10%;
+    }
+
+    #email,
+    #name,
+    #nic,
+    #number,
+    #address,
+    #age,
+    #password {
+        width: 60%;
+    }
 }

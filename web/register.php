@@ -18,22 +18,25 @@ include 'controller/LoginController.php';
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 p-0" style="background-color: #222831; border-radius: 0 0 0 12rem;">
+            <div class="col-md-6 p-0 column-1">
                 <div class="col-12 left-col">
                     <img src="images/Login/man.png" alt="Register">
                     <p class="fs-1 fw-semibold" style=" font-family: 'Poppins';">Get Started!</p>
                     <p style="text-align: center;">Already have an account?</p>
                     <a href="login.php" style="width: 100%; display: flex; justify-content: center; text-decoration: none;">
-                        <button type="submit" class="button-02 mb-5 fw-semibold">Sign In</button>
+                        <button type="submit" class="button-02 mb-1 fw-semibold">Sign In</button>
+                    </a>
+                    <a href="index.php" style="width: 100%; display: flex; justify-content: center; text-decoration: none;">
+                        <button type="submit" class="button-02 mb-5 fw-semibold">Home</button>
                     </a>
                 </div>
             </div>
-            <div class="col-md-6 p-0">
+            <div class="col-md-6 p-0 column-2">
                 <div class="col-12 right-col">
                     <div class="container from-details">
                         <p class="text-white fs-1 fw-semibold">Welcome</p>
-                        <p class="text-white">Please Register With Your Personal Informations</p>
-                        <form class="mt-5 overflow-y-scroll" style="height: 25rem; scrollbar-width: none;" method="post" action="controller/LoginController.php">
+                        <p class="text-white text-center">Please Register With Your Personal Informations</p>
+                        <form class="mt-5 overflow-y-scroll" method="post" action="controller/LoginController.php">
                             <div class="form-group">
                                 <label for="name">Full Name</label>
                                 <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">

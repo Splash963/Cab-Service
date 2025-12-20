@@ -1,6 +1,6 @@
 <?php
 
-include "db.php";
+include __DIR__ . "/../database/db.php";
 
 class loginController
 {
@@ -25,7 +25,7 @@ class loginController
                 unset($_SESSION['redirect_after_login']);
                 header("Location: " . $redirect);
             } else {
-                header("Location: index.php");
+                header("Location: /Cab_Service/web/index.php");
             }
             exit();
         } catch (Exception $e) {
@@ -53,7 +53,7 @@ class loginController
                     unset($_SESSION['redirect_after_login']);
                     header("Location: " . $redirect);
                 } else {
-                    header("Location: index.php");
+                    header("Location: /Cab_Service/web/index.php");
                 }
                 exit();
             } else {
@@ -69,7 +69,7 @@ class loginController
         session_start();
         session_unset();
         session_destroy();
-        header("Location: index.php");
+        header("Location: /Cab_Service/web/index.php");
         exit();
     }
 }

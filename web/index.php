@@ -13,6 +13,8 @@
 
     <!-- Navbar -->
     <?php
+    session_start();
+
     $currentPage = 'home';
     include 'layouts/navbar.php';
     ?>

@@ -11,6 +11,10 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 </head>
 
+<?php
+include 'registerController.php';
+?>
+
 <body>
     <div class="container">
         <div class="row">
@@ -29,42 +33,42 @@
                     <div class="container from-details">
                         <p class="text-white fs-1 fw-semibold">Welcome</p>
                         <p class="text-white">Please Register With Your Personal Informations</p>
-                        <form class="mt-5 overflow-y-scroll" style="height: 25rem; scrollbar-width: none;">
+                        <form class="mt-5 overflow-y-scroll" style="height: 25rem; scrollbar-width: none;" method="post" action="registerController.php">
                             <div class="form-group">
                                 <label for="name">Full Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Enter name">
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
                             </div>
                             <div class="form-group">
                                 <label for="age">Age</label>
-                                <input type="number" class="form-control" id="age" placeholder="Enter age">
+                                <input type="number" class="form-control" name="age" id="age" placeholder="Enter age">
                             </div>
                             <div class="form-group">
                                 <label for="address">Address</label>
-                                <input type="text" class="form-control" id="address" placeholder="Enter address">
+                                <input type="text" class="form-control" name="address" id="address" placeholder="Enter address">
                             </div>
                             <div class="form-group">
                                 <label for="nic">NIC Number</label>
-                                <input type="number" class="form-control" id="nic" placeholder="Enter nic">
+                                <input type="text" class="form-control" name="nic" id="nic" placeholder="Enter nic">
                             </div>
                             <div class="form-group">
                                 <label for="number">Phone Number</label>
-                                <input type="number" class="form-control" id="number" placeholder="Enter number">
+                                <input type="number" class="form-control" name="number" id="number" placeholder="Enter number">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="Enter password">
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
                             </div>
                             <div>
-                                <input class="form-check-input" type="checkbox" value="" id="terms" required>
+                                <input class="form-check-input" type="checkbox" value="" name="terms" id="terms" required>
                                 <label class="form-check-label" for="terms">
                                     I Agree To The Terms & Conditions
                                 </label>
                             </div>
-                            <button type="submit" class="button-01 mt-5">Register</button>
+                            <button type="submit" class="button-01 mt-5" name="registerButton">Register</button>
                         </form>
                     </div>
                 </div>

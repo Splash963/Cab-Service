@@ -11,6 +11,20 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 </head>
 
+<?php
+include 'functions.php';
+$functions = new loginController();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    if (isset($_POST['loginButton'])) {
+        $functions->login($email, $password);
+    }
+}
+?>
+
 <body>
     <div class="container">
         <div class="row">
@@ -29,16 +43,16 @@
                     <div class="container from-details">
                         <p class="text-white fs-1 fw-semibold">Welcome</p>
                         <p class="text-white">Log into your account to continue</p>
-                        <form class="mt-5">
+                        <form class="mt-5" method="post" action="loginController.php">
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email">
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="Enter password">
+                                <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
                             </div>
-                            <button type="submit" class="button-01 mt-5">Login</button>
+                            <button type="submit" name="loginButton" class="button-01 mt-5">Login</button>
                         </form>
                     </div>
                 </div>

@@ -13,8 +13,23 @@
 
     <!-- Navbar -->
     <?php
+    session_start();
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['sendMessage'])) {
+        session_start();
+        if (!isset($_SESSION['user_id'])) {
+            $_SESSION['redirect_after_login'] = $_SERVER['REQUEST_URI'];
+            header("Location: login.php");
+            exit();
+        }
+
+        $message = $_POST['message'] ?? '';
+        echo "<script>alert('Message sent successfully');</script>";
+    }
+
     $currentPage = 'contact';
     include 'layouts/navbar.php';
+
     ?>
 
     <!-- Contact Button -->
@@ -44,7 +59,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h2 class="text-center titles mt-4 mb-4">Contact Us</h2>
-                <form class="booking-form">
+                <form class="booking-form" method="POST">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input type="text" class="form-control" id="name" required>
@@ -69,7 +84,7 @@
                         <label for="message" class="form-label">Review/Question</label>
                         <textarea class="form-control" id="message" rows="4" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button type="submit" name="sendMessage" class="btn btn-primary">Send Message</button>
                 </form>
             </div>
             <div class="col-md-6">
@@ -82,9 +97,6 @@
     <!-- Footer -->
     <?php include 'layouts/footer.php'; ?>
 
-    <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
     <script src="js/animation.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -13,6 +13,21 @@
 
     <!-- Navbar -->
     <?php
+
+    session_start();
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['sendMessage'])) {
+        session_start();
+        if (!isset($_SESSION['user_id'])) {
+            $_SESSION['redirect_after_login'] = $_SERVER['REQUEST_URI'];
+            header("Location: login.php");
+            exit();
+        }
+
+        $message = $_POST['message'] ?? '';
+        echo "<script>alert('Message sent successfully');</script>";
+    }
+
     $currentPage = 'booking';
     include 'layouts/navbar.php';
     ?>
@@ -44,7 +59,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h2 class="text-center titles mt-4 mb-4">Book Now</h2>
-                <form class="booking-form">
+                <form class="booking-form" method="POST">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input type="text" class="form-control" id="name" required>
@@ -104,7 +119,7 @@
                         <label for="message" class="form-label">Additional Notes</label>
                         <textarea class="form-control" id="message" rows="4" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary submit-button">Submit</button>
+                    <button type="submit" name="sendMessage" class="btn btn-primary submit-button">Submit</button>
                 </form>
             </div>
         </div>

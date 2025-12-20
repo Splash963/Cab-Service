@@ -36,6 +36,27 @@
                     <li class="nav-item pe-3">
                         <a class="nav-link <?php echo ($currentPage === 'booking') ? 'active-color' : 'nav-color'; ?>" href="booking.php">Booking</a>
                     </li>
+                    <?php if (!isset($_SESSION['user_id'])) { ?>
+                        <!-- User is NOT logged in -->
+                        <li class="nav-item pe-3">
+                            <a class="nav-link <?php echo ($currentPage === 'login') ? 'active-color' : 'nav-color'; ?>" href="login.php">Login</a>
+                        </li>
+                        <li class="nav-item pe-3">
+                            <a class="nav-link <?php echo ($currentPage === 'register') ? 'active-color' : 'nav-color'; ?>" href="register.php">Register</a>
+                        </li>
+                    <?php } else { ?>
+                        <!-- User IS logged in -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?php echo htmlspecialchars($_SESSION['user_name']); ?>
+                            </a>
+                            <form action="logoutController.php" method="POST">
+                                <ul class="dropdown-menu">
+                                    <li><button type="submit" name="logout" class="dropdown-item">Logout</button></li>
+                                </ul>
+                            </form>
+                        </li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>

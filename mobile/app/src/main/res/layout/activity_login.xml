@@ -1,0 +1,110 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <!-- Top Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:background="@drawable/rounded_corners"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- Logo -->
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="250dp"
+            android:src="@drawable/man"
+            android:layout_gravity="center"/>
+
+        <!-- Welcome Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome Back!"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="35sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To Stay Connected With Us\nPlease Login With Your Personal Informations"
+            android:textSize="13sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_marginTop="5dp"/>
+    </LinearLayout>
+
+    <!-- Bottom Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/background"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:padding="20dp">
+
+        <!-- Welcome -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Email -->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter email"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/white"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Password -->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter password"
+            android:inputType="textPassword"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/white"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="login"
+                android:textColor="@color/background"
+                android:backgroundTint="@color/yellow" />
+
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="Sign Up"
+                android:textColor="@color/background"
+                android:backgroundTint="@color/yellow"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

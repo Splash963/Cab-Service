@@ -1,6 +1,6 @@
 <?php
 
-include __DIR__ . "/../database/db.php";
+include "db.php";
 
 class loginController
 {

@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . '/../functions/LoginFunctions.php';
+include "LoginFunctions.php";
 $functions = new loginController();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

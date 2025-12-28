@@ -37,7 +37,7 @@ class loginController
     {
         global $conn;
         try {
-            $stmt = $conn->prepare("SELECT user_id, name, password FROM users WHERE email = ?");
+            $stmt = $conn->prepare("SELECT user_id, name, password, user_type FROM users WHERE email = ?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -47,6 +47,7 @@ class loginController
                 session_start();
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['user_name'] = $user['name'];
+                $_SESSION['user_type'] = $user['user_type'];
 
                 if (isset($_SESSION['redirect_after_login'])) {
                     $redirect = $_SESSION['redirect_after_login'];

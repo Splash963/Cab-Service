@@ -4,6 +4,7 @@ include "db.php";
 class BookingFunctions
 {
     public function insert(
+        $booking_id,
         $user_id,
         $phone_no,
         $no_of_dates,
@@ -20,9 +21,9 @@ class BookingFunctions
 
         try {
 
-            $stmt = $conn->prepare("INSERT INTO booking (user_id, phone_no, no_of_dates, pickup_location, drop_location, pickup_date, pickup_time, vehicle_type, ride_type, additional_notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO booking (booking_id, user_id, phone_no, no_of_dates, pickup_location, drop_location, pickup_date, pickup_time, vehicle_type, ride_type, additional_notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-            $stmt->bind_param("ssssssssss", $user_id, $phone_no, $no_of_dates, $pickup_location, $drop_location, $pickup_date, $pickup_time, $vehicle_type, $ride_type, $additional_notes);
+            $stmt->bind_param("sssssssssss", $booking_id, $user_id, $phone_no, $no_of_dates, $pickup_location, $drop_location, $pickup_date, $pickup_time, $vehicle_type, $ride_type, $additional_notes);
 
             return $stmt->execute();
         } catch (mysqli_sql_exception $e) {

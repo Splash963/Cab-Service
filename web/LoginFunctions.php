@@ -5,19 +5,19 @@ include "db.php";
 class loginController
 {
 
-    public function register($name, $age, $address, $nic, $number, $email, $hashedPassword)
+    public function register($user_id, $user_type, $name, $age, $address, $nic, $number, $email, $hashedPassword, $conditions)
     {
         global $conn;
 
         try {
-            $stmt = $conn->prepare("INSERT INTO users (name, age, address, nic, number, email, password) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("sisssss", $name, $age, $address, $nic, $number, $email, $hashedPassword);
+            $stmt = $conn->prepare("INSERT INTO users (user_id, user_type, name, age, address, nic, number, email, password, conditions) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssissssss", $user_id, $user_type, $name, $age, $address, $nic, $number, $email, $hashedPassword, $conditions);
             $stmt->execute();
 
             $newUserId = $stmt->insert_id;
 
             session_start();
-            $_SESSION['user_id'] = $newUserId;
+            $_SESSION['user_id'] = $user_id;
             $_SESSION['user_name'] = $name;
 
             if (isset($_SESSION['redirect_after_login'])) {
@@ -25,7 +25,7 @@ class loginController
                 unset($_SESSION['redirect_after_login']);
                 header("Location: " . $redirect);
             } else {
-                header("Location: /Cab_Service/web/index.php");
+                header("Location: /Cab-Service/web/index.php");
             }
             exit();
         } catch (Exception $e) {
@@ -37,7 +37,7 @@ class loginController
     {
         global $conn;
         try {
-            $stmt = $conn->prepare("SELECT id, name, password FROM users WHERE email = ?");
+            $stmt = $conn->prepare("SELECT user_id, name, password FROM users WHERE email = ?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -45,7 +45,7 @@ class loginController
 
             if ($user && password_verify($password, $user['password'])) {
                 session_start();
-                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['user_name'] = $user['name'];
 
                 if (isset($_SESSION['redirect_after_login'])) {
@@ -53,7 +53,7 @@ class loginController
                     unset($_SESSION['redirect_after_login']);
                     header("Location: " . $redirect);
                 } else {
-                    header("Location: /Cab_Service/web/index.php");
+                    header("Location: /Cab-Service/web/index.php");
                 }
                 exit();
             } else {
@@ -69,7 +69,7 @@ class loginController
         session_start();
         session_unset();
         session_destroy();
-        header("Location: /Cab_Service/web/index.php");
+        header("Location: /Cab-Service/web/index.php");
         exit();
     }
 }

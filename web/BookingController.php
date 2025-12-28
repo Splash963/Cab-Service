@@ -4,6 +4,18 @@ include_once "BookingFunctions.php";
 $bookingFunctions = new BookingFunctions();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $result = $conn->query("SELECT booking_id FROM booking ORDER BY booking_id DESC LIMIT 1");
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $lastId = $row['booking_id'];
+        $num = (int)str_replace("booking_", "", $lastId);
+        $nextNum = $num + 1;
+    } else {
+        $nextNum = 1;
+    }
+    $booking_id = "booking_" . $nextNum;
+
     $user_id = $_POST['user_id'];
     $phone_no = $_POST['phone_no'];
     $no_of_dates = $_POST['no_of_dates'];
@@ -16,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $additional_notes = $_POST['additional_notes'];
 
     $result = $bookingFunctions->insert(
+        $booking_id,
         $user_id,
         $phone_no,
         $no_of_dates,

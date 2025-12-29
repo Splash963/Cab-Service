@@ -23,7 +23,7 @@
                             </span>
                         </button>
                         <div class="profile">
-                            <img src="images/Users/images.png" class="img-fluid profile-img" alt="...">
+                            <img src="<?php echo $_SESSION['profile']; ?>" class="img-fluid profile-img" alt="...">
                             <p class="profile-text"><?php echo $_SESSION['user_name']; ?></p>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                                         </svg>
                                     </div>
                                     <div class="nav-link">
-                                        <a class="link {{ Request::is('admin') ? 'active' : '' }}" href="{{ route('admin.index')}}">Home</a>
+                                        <a class="link <?php echo ($currentPage === 'dashboard') ? 'active' : 'nav-color'; ?>" href="dashboard.php">Home</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
@@ -80,7 +80,7 @@
                                         </svg>
                                     </div>
                                     <div class="nav-link">
-                                        <a class="link {{ Request::is('admin-appointment') ? 'active' : '' }}" href="{{ route('admin-appointment.index') }}">Bookings</a>
+                                        <a class="link <?php echo ($currentPage === 'admin-booking') ? 'active' : 'nav-color'; ?>" href="admin-booking.php">Bookings</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">

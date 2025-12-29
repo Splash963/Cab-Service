@@ -40,7 +40,7 @@ class loginController
     {
         global $conn;
         try {
-            $stmt = $conn->prepare("SELECT user_id, name, password, user_type FROM users WHERE email = ?");
+            $stmt = $conn->prepare("SELECT user_id, name, password, user_type, profile FROM users WHERE email = ?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
             $result = $stmt->get_result();

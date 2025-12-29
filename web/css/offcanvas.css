@@ -1,5 +1,5 @@
 body {
-    background-color: #222831;
+    background-color: #eeeff3;
 }
 
 .navbar-head {
@@ -47,7 +47,7 @@ body {
 }
 
 .offcanvas-body {
-    background-color: #1b3c53;
+    background-color: #213448;
 }
 
 .icon-card {
@@ -142,7 +142,7 @@ body {
 }
 
 .navbar-nav .link.active {
-    color: #40a578 !important;
+    color: #FFD41D !important;
 }
 
 .navbar-nav .nav-link {
@@ -158,12 +158,12 @@ body {
     bottom: 0;
     width: 0;
     height: 2px;
-    background-color: #eef7ff;
+    background-color: #FFC50F;
     transition: width 0.3s ease;
 }
 
 .navbar-nav .nav-link:hover {
-    color: #40a578 !important;
+    color: #FFD41D !important;
 }
 
 .navbar-nav .nav-link:hover::after {

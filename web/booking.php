@@ -107,7 +107,7 @@
                     </div>
                     <?php
                     if (isset($_SESSION['user_id'])) {
-                        echo '<button type="submit" name="submit" class="btn btn-warning submit-button">Submit</button>';
+                        echo '<button type="submit" name="submit" id="submitBtn" class="btn btn-warning submit-button">Submit</button>';
                     } else {
                         echo '<button type="button" class="btn btn-warning" onclick="window.location.href=\'login.php\'">Login to Continue</button>';
                     }
@@ -121,27 +121,26 @@
     <?php include 'layouts/footer.php'; ?>
 
     <script>
-        $.ajax({
-            url: "BookingController.php",
-            type: "POST",
-            data: $(this).serialize(),
-            dataType: "json",
-            success: function(response) {
-                if (response.success) {
-                    alert("Booking Successful");
-                    $("#bookingform")[0].reset();
+        $("#bookingform").submit(function(e) {
+            e.preventDefault();
 
-                    $.ajax({
-                        url: "EmailController.php",
-                        type: "POST",
-                        data: $(this).serialize(),
-                        dataType: "json"
-                    });
+            let submitBtn = $("#submitBtn");
+            submitBtn.text("Saving...").prop("disabled", true);
+
+            $.ajax({
+                url: "BookingController.php",
+                type: "POST",
+                data: $(this).serialize(),
+                dataType: "json",
+                success: function(response) {
+                    alert(response.message);
+                    $("#bookingform")[0].reset();
+                    submitBtn.text("Submit").prop("disabled", false); // re-enable
+                },
+                error: function() {
+                    submitBtn.text("Submit").prop("disabled", false);
                 }
-            },
-            error: function(xhr) {
-                alert("Error: " + xhr.responseText);
-            }
+            });
         });
     </script>
 

@@ -46,8 +46,7 @@
                     <?php } else { ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <?php echo $_SESSION['user_name']; ?>
-                                <img src="<?php echo $_SESSION['profile']; ?>" class="profile-img" alt="">
+                                <?php echo htmlspecialchars($_SESSION['user_name']); ?>
                             </a>
                             <form action="../web/controller/LoginController.php" method="POST">
                                 <ul class="dropdown-menu">
@@ -56,7 +55,6 @@
                             </form>
                         </li>
                     <?php } ?>
-
                 </ul>
             </div>
         </div>

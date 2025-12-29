@@ -72,8 +72,7 @@ label {
 #number,
 #address,
 #age,
-#password,
-#profile_image {
+#password {
     width: 70%;
     border-radius: 1rem;
     border: none;

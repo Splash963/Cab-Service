@@ -1,48 +1,76 @@
 <?php
-header('Content-Type: application/json');
-include_once "BookingFunctions.php";
-$bookingFunctions = new BookingFunctions();
+include "LoginFunctions.php";
+$functions = new loginController();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $result = $conn->query("SELECT booking_id FROM booking ORDER BY booking_id DESC LIMIT 1");
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $lastId = $row['booking_id'];
-        $num = (int)str_replace("booking_", "", $lastId);
-        $nextNum = $num + 1;
-    } else {
-        $nextNum = 1;
+    // Ensure DB connection is available
+    if (!isset($conn)) {
+        include "db_connection.php"; // or wherever $conn is defined
     }
-    $booking_id = "booking_" . $nextNum;
 
-    $user_id = $_POST['user_id'];
-    $phone_no = $_POST['phone_no'];
-    $no_of_dates = $_POST['no_of_dates'];
-    $pickup_location = $_POST['pickup_location'];
-    $drop_location = $_POST['drop_location'];
-    $pickup_date = $_POST['pickup_date'];
-    $pickup_time = $_POST['pickup_time'];
-    $vehicle_type = $_POST['vehicle_type'];
-    $ride_type = $_POST['ride_type'];
-    $additional_notes = $_POST['additional_notes'];
+    // Generate next user ID
+    $result = $conn->query("SELECT user_id FROM users ORDER BY user_id DESC LIMIT 1");
+    $nextNum = ($result && $result->num_rows > 0)
+        ? ((int)str_replace("user_", "", $result->fetch_assoc()['user_id']) + 1)
+        : 1;
 
-    $result = $bookingFunctions->insert(
-        $booking_id,
-        $user_id,
-        $phone_no,
-        $no_of_dates,
-        $pickup_location,
-        $drop_location,
-        $pickup_date,
-        $pickup_time,
-        $vehicle_type,
-        $ride_type,
-        $additional_notes
-    );
+    $user_id = "user_" . $nextNum;
+    $user_type = "user";
+    $name = $_POST['name'];
+    $age = $_POST['age'];
+    $address = $_POST['address'];
+    $nic = $_POST['nic'];
+    $number = $_POST['number'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    echo json_encode([
-        'success' => $result,
-        'message' => $result ? 'Booking added successfully!' : 'Insert failed'
-    ]);
+    // ✅ Handle profile image upload
+    $profile_image = "";
+    if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] === UPLOAD_ERR_OK) {
+        $targetDir = __DIR__ . "/images/Users/";
+        if (!is_dir($targetDir)) {
+            mkdir($targetDir, 0777, true);
+        }
+
+        $fileName = uniqid("user_") . "_" . basename($_FILES["profile_image"]["name"]);
+        $targetFilePath = $targetDir . $fileName;
+
+        if (move_uploaded_file($_FILES["profile_image"]["tmp_name"], $targetFilePath)) {
+            // Store relative path for DB
+            $profile_image = "images/Users/" . $fileName;
+        } else {
+            echo "❌ Failed to move uploaded file.";
+        }
+    }
+
+    $conditions = "Agreed";
+
+    // Handle actions
+    if (isset($_POST['registerButton'])) {
+        $functions->register(
+            $user_id,
+            $user_type,
+            $name,
+            $age,
+            $address,
+            $nic,
+            $number,
+            $email,
+            $hashedPassword,
+            $profile_image,
+            $conditions
+        );
+        header("Location: register.php");
+        exit();
+    } elseif (isset($_POST['loginButton'])) {
+        $functions->login($email, $password);
+        header("Location: login.php");
+        exit();
+    } elseif (isset($_POST['logout'])) {
+        $functions->logout();
+        header("Location: index.php");
+        exit();
+    }
 }

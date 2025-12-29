@@ -5,12 +5,19 @@ body {
 /* Navbar */
 .nav-color {
     color: #1d1f45;
-    
+
 }
 
-.head-logo{
+.head-logo {
     width: clamp(4rem, 5vw, 6rem);
     height: clamp(3rem, 4vw, 5rem);
+}
+
+.profile-img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    margin-left: 1rem;
 }
 
 @media (max-width: 768px) {
@@ -29,7 +36,7 @@ body {
     color: #F5C45E;
 }
 
-.active-color{
+.active-color {
     color: #CCA713;
 }
 
@@ -94,23 +101,23 @@ body {
     z-index: 1050;
 }
 
-.contact-op-btn{
+.contact-op-btn {
     border-radius: 30px;
 }
 
-.op-btn1{
+.op-btn1 {
     background-color: #062F6B;
     border: #062F6B;
-    width: clamp(6rem,10vw,10rem);
+    width: clamp(6rem, 10vw, 10rem);
     padding: 5px;
-    height: clamp(3rem,3.4vw,3.4vw);
+    height: clamp(3rem, 3.4vw, 3.4vw);
 }
 
-.op-btn2{
+.op-btn2 {
     background-color: #249028;
     border: #249028;
-    width: clamp(6rem,10vw, 10rem);
-    height: clamp(3rem,3.4vw,3.4vw);
+    width: clamp(6rem, 10vw, 10rem);
+    height: clamp(3rem, 3.4vw, 3.4vw);
     padding: 5px;
 }
 
@@ -135,19 +142,19 @@ body {
 
 
 /* From */
-.form-label{
+.form-label {
     color: black;
     opacity: 80%;
 }
 
-.booking-form{
+.booking-form {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.submit-button{
+.submit-button {
     background-color: #ffcd05;
     color: black;
     border: none;

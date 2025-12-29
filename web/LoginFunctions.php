@@ -5,13 +5,13 @@ include "db.php";
 class loginController
 {
 
-    public function register($user_id, $user_type, $name, $age, $address, $nic, $number, $email, $hashedPassword, $conditions)
+    public function register($user_id, $user_type, $name, $age, $address, $nic, $number, $email, $hashedPassword, $profile_image, $conditions)
     {
         global $conn;
 
         try {
-            $stmt = $conn->prepare("INSERT INTO users (user_id, user_type, name, age, address, nic, number, email, password, conditions) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssissssss", $user_id, $user_type, $name, $age, $address, $nic, $number, $email, $hashedPassword, $conditions);
+            $stmt = $conn->prepare("INSERT INTO users (user_id, user_type, name, age, address, nic, number, email, password, profile, conditions) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssisssssss", $user_id, $user_type, $name, $age, $address, $nic, $number, $email, $hashedPassword, $profile_image, $conditions);
             $stmt->execute();
 
             $newUserId = $stmt->insert_id;
@@ -19,6 +19,9 @@ class loginController
             session_start();
             $_SESSION['user_id'] = $user_id;
             $_SESSION['user_name'] = $name;
+            $_SESSION['user_type'] = $user_type;
+            $_SESSION['profile'] = $profile_image;
+
 
             if (isset($_SESSION['redirect_after_login'])) {
                 $redirect = $_SESSION['redirect_after_login'];
@@ -48,6 +51,7 @@ class loginController
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['user_name'] = $user['name'];
                 $_SESSION['user_type'] = $user['user_type'];
+                $_SESSION['profile'] = $user['profile'];
 
                 if (isset($_SESSION['redirect_after_login'])) {
                     $redirect = $_SESSION['redirect_after_login'];

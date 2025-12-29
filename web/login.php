@@ -12,7 +12,7 @@
 </head>
 
 <?php
-include '../web/functions/LoginFunctions.php';
+include 'LoginFunctions.php';
 $functions = new loginController();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

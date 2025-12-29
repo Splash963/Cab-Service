@@ -7,26 +7,14 @@
     <title>Booking</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/booking.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
 
     <!-- Navbar -->
     <?php
-
     session_start();
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['sendMessage'])) {
-        session_start();
-        if (!isset($_SESSION['user_id'])) {
-            $_SESSION['redirect_after_login'] = $_SERVER['REQUEST_URI'];
-            header("Location: login.php");
-            exit();
-        }
-
-        $message = $_POST['message'] ?? '';
-        echo "<script>alert('Message sent successfully');</script>";
-    }
 
     $currentPage = 'booking';
     include 'layouts/navbar.php';
@@ -59,67 +47,71 @@
         <div class="row">
             <div class="col-md-12">
                 <h2 class="text-center titles mt-4 mb-4">Book Now</h2>
-                <form class="booking-form" method="POST">
+                <form class="booking-form" id="bookingform">
+                    <?php
+                    if (isset($_SESSION['user_id'])) {
+                        echo "<input type='hidden' name='user_id' value='" . $_SESSION['user_id'] . "'>";
+                    } else {
+                        echo "<input type='hidden' name='user_id' value=''>";
+                    }
+                    ?>
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" required>
+                        <label for="phone-no" class="form-label">Additional Phone Number</label>
+                        <input type="number" name="phone_no" class="form-control" id="phone-no" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="phone-no" class="form-label">Phone Number</label>
-                        <input type="number" class="form-control" id="phone-no" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" required>
-                    </div>
-
                     <div class="mb-3">
                         <label for="date" class="form-label">No of Dates</label>
-                        <input type="text" class="form-control" id="date" required>
+                        <input type="text" name="no_of_dates" class="form-control" id="date" required>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Pickup Location" aria-label="First name">
+                            <input type="text" name="pickup_location" class="form-control" placeholder="Pickup Location" required>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Drop-off Location" aria-label="Last name">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="Pickup Date" aria-label="First name">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="Pickup Time" aria-label="Last name">
+                            <input type="text" name="drop_location" class="form-control" placeholder="Drop-off Location" required>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col">
-                            <select class="form-select" aria-label="Default select example">
+                            <input type="date" name="pickup_date" class="form-control" placeholder="Pickup Date" required>
+                        </div>
+                        <div class="col">
+                            <input type="time" name="pickup_time" class="form-control" placeholder="Pickup Time" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <select name="vehicle_type" class="form-select" aria-label="Default select example" required>
                                 <option selected>Vehicle Type</option>
-                                <option value="1">Car</option>
-                                <option value="2">Van</option>
-                                <option value="3">Three Wheeler</option>
+                                <option value="Car">Car</option>
+                                <option value="Van">Van</option>
+                                <option value="Three Wheeler">Three Wheeler</option>
                             </select>
                         </div>
                         <div class="col">
-                            <select class="form-select" aria-label="Default select example">
+                            <select name="ride_type" class="form-select" aria-label="Default select example" required>
                                 <option selected>Type</option>
-                                <option value="1">Short Ride</option>
-                                <option value="2">Holiday & Tour Packages</option>
-                                <option value="3">Wedding & Event Cars</option>
-                                <option value="4">Airport Transfer</option>
+                                <option value="Short Ride">Short Ride</option>
+                                <option value="Holiday & Tour Packages">Holiday & Tour Packages</option>
+                                <option value="Wedding & Event Cars">Wedding & Event Cars</option>
+                                <option value="Airport Transfer">Airport Transfer</option>
                             </select>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="message" class="form-label">Additional Notes</label>
-                        <textarea class="form-control" id="message" rows="4" required></textarea>
+                        <textarea class="form-control" name="additional_notes" id="message" rows="4" required></textarea>
                     </div>
-                    <button type="submit" name="sendMessage" class="btn btn-primary submit-button">Submit</button>
+                    <?php
+                    if (isset($_SESSION['user_id'])) {
+                        echo '<button type="submit" name="submit" class="btn btn-warning submit-button">Submit</button>';
+                    } else {
+                        echo '<button type="button" class="btn btn-warning" onclick="window.location.href=\'login.php\'">Login to Continue</button>';
+                    }
+                    ?>
                 </form>
             </div>
         </div>
@@ -127,6 +119,29 @@
 
     <!-- Footer -->
     <?php include 'layouts/footer.php'; ?>
+
+    <script>
+        $("#bookingform").submit(function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: "BookingController.php",
+                type: "POST",
+                data: $(this).serialize(),
+                dataType: "json",
+
+                success: function(response) {
+                    if (response.success) {
+                        alert("Booking Successful");
+                        $("#bookingform")[0].reset();
+                    }
+                },
+                error: function(xhr) {
+                    alert("Error: " + xhr.responseText);
+                }
+            })
+        })
+    </script>
 
     <script>
         document.getElementById("year").textContent = new Date().getFullYear();

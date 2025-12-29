@@ -47,6 +47,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <?php echo htmlspecialchars($_SESSION['user_name']); ?>
+                                <img src="<?php echo htmlspecialchars($_SESSION['profile']); ?>" alt="Profile" class="profile-img">
                             </a>
                             <form action="LoginController.php" method="POST">
                                 <ul class="dropdown-menu">

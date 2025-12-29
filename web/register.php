@@ -36,7 +36,7 @@ include 'LoginController.php';
                     <div class="container from-details">
                         <p class="text-white fs-1 fw-semibold">Welcome</p>
                         <p class="text-white text-center">Please Register With Your Personal Informations</p>
-                        <form class="mt-5 overflow-y-scroll" method="post" action="LoginController.php">
+                        <form class="mt-5 overflow-y-scroll" method="post" action="LoginController.php" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="name">Full Name</label>
                                 <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
@@ -64,6 +64,10 @@ include 'LoginController.php';
                             <div class="form-group">
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
+                            </div>
+                            <div class="form-group">
+                                <label for="profile_image">Profile Image</label>
+                                <input type="file" class="form-control" name="profile_image" id="profile_image">
                             </div>
                             <div>
                                 <input class="form-check-input" type="checkbox" value="" name="terms" id="terms" required>

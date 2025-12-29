@@ -121,26 +121,28 @@
     <?php include 'layouts/footer.php'; ?>
 
     <script>
-        $("#bookingform").submit(function(e) {
-            e.preventDefault();
+        $.ajax({
+            url: "BookingController.php",
+            type: "POST",
+            data: $(this).serialize(),
+            dataType: "json",
+            success: function(response) {
+                if (response.success) {
+                    alert("Booking Successful");
+                    $("#bookingform")[0].reset();
 
-            $.ajax({
-                url: "BookingController.php",
-                type: "POST",
-                data: $(this).serialize(),
-                dataType: "json",
-
-                success: function(response) {
-                    if (response.success) {
-                        alert("Booking Successful");
-                        $("#bookingform")[0].reset();
-                    }
-                },
-                error: function(xhr) {
-                    alert("Error: " + xhr.responseText);
+                    $.ajax({
+                        url: "EmailController.php",
+                        type: "POST",
+                        data: $(this).serialize(),
+                        dataType: "json"
+                    });
                 }
-            })
-        })
+            },
+            error: function(xhr) {
+                alert("Error: " + xhr.responseText);
+            }
+        });
     </script>
 
     <script>

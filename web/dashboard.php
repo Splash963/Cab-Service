@@ -43,8 +43,8 @@
         <div class="main">
 
             <div>
-                <h1 class="text-center mt-5 text-white">Admin Dashboard</h1>
-                <p class="text-center text-white">Welcome to the admin dashboard. Here you can manage the website content and settings.</p>
+                <h1 class="text-center mt-5">Admin Dashboard</h1>
+                <p class="text-center">Welcome to the admin dashboard. Here you can manage the website content and settings.</p>
             </div>
 
             <div class="quick-links mb-5">

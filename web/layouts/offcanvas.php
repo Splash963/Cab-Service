@@ -22,9 +22,16 @@
                                 <span class="visually-hidden">New alerts</span>
                             </span>
                         </button>
-                        <div class="profile">
-                            <img src="<?php echo $_SESSION['profile']; ?>" class="img-fluid profile-img" alt="...">
+                        <div class="dropdown" style="display: flex; align-items: center; gap: 1em;">
+                            <button type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent; border: none; padding: 0;">
+                                <img src="<?php echo $_SESSION['profile']; ?>" class="img-fluid profile-img" alt="...">
+                            </button>
                             <p class="profile-text"><?php echo $_SESSION['user_name']; ?></p>
+                            <form action="LoginController.php" method="POST">
+                                <ul class="dropdown-menu">
+                                    <li><button type="submit" name="logout" class="dropdown-item">Logout</button></li>
+                                </ul>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -44,7 +51,7 @@
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                     <div class="offcanvas offcanvas-start half-screen" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                        <div class="offcanvas-header" style="background-color: #1B3C53; display: inline-block;">
+                        <div class="offcanvas-header" style="background-color: #213448; display: inline-block;">
                             <div>
                                 <div style="display: flex; justify-content: center;">
                                     <div class="icon-card mt-3 mb-3">

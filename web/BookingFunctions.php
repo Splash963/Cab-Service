@@ -31,4 +31,91 @@ class BookingFunctions
             die("Insert Data Failed :" . $e->getMessage());
         }
     }
+
+    public function view()
+    {
+
+        global $conn;
+
+        try {
+
+            $result = $conn->query("
+        SELECT 
+            b.booking_id,
+            u.name AS user_name,
+            u.number,
+            u.profile,
+            b.phone_no,
+            b.pickup_date,
+            b.pickup_time,
+            b.vehicle_type,
+            b.ride_type,
+            b.status
+        FROM booking b
+        INNER JOIN users u ON b.user_id = u.user_id
+        ");
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch (mysqli_sql_exception $e) {
+            die("Show Data Failed :" . $e->getMessage());
+        }
+    }
+
+    public function pending()
+    {
+        global $conn;
+
+        try {
+
+            $result = $conn->query("
+        SELECT 
+            b.booking_id,
+            u.name AS user_name,
+            u.number,
+            u.profile,
+            b.phone_no,
+            b.pickup_date,
+            b.pickup_time,
+            b.vehicle_type,
+            b.ride_type,
+            b.status
+        FROM booking b
+        INNER JOIN users u ON b.user_id = u.user_id
+        WHERE b.status = 'pending'
+        ");
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch (mysqli_sql_exception $e) {
+            die("Show Data Failed :" . $e->getMessage());
+        }
+    }
+
+    public function confirmed()
+    {
+        global $conn;
+
+        try {
+
+            $result = $conn->query("
+        SELECT 
+            b.booking_id,
+            u.name AS user_name,
+            u.number,
+            u.profile,
+            b.phone_no,
+            b.pickup_date,
+            b.pickup_time,
+            b.vehicle_type,
+            b.ride_type,
+            b.status
+        FROM booking b
+        INNER JOIN users u ON b.user_id = u.user_id
+        WHERE b.status = 'confirmed'
+        ");
+
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch (mysqli_sql_exception $e) {
+            die("Show Data Failed :" . $e->getMessage());
+        }
+    }
 }

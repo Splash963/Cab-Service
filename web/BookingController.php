@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ]);
         exit;
     }
+
     $user_id = $_SESSION['user_id'];
     $phone_no = $_POST['phone_no'] ?? '';
     $no_of_dates = $_POST['no_of_dates'] ?? '';

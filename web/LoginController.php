@@ -39,6 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+    if ($profile_image == "") {
+        $profile_image = "images/Users/images.png";
+    }
+
     $conditions = "Agreed";
 
     // Handle actions

@@ -34,8 +34,8 @@
         include('BookingFunctions.php');
         $functions = new BookingFunctions();
         $bookings = $functions->view();
-        $pending = $functions->pending();
-        $confirmed = $functions->confirmed();
+        $pending = $functions->view_pending();
+        $confirmed = $functions->view_confirmed();
 
         ?>
 

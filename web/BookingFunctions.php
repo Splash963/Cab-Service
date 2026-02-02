@@ -61,7 +61,7 @@ class BookingFunctions
         }
     }
 
-    public function pending()
+    public function view_pending()
     {
         global $conn;
 
@@ -90,7 +90,7 @@ class BookingFunctions
         }
     }
 
-    public function confirmed()
+    public function view_confirmed()
     {
         global $conn;
 

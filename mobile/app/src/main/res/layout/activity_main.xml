@@ -9,7 +9,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cab Admin Panel"
+        android:text="@string/cab_admin_panel"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -17,14 +17,14 @@
         android:id="@+id/btnBookings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="View Bookings"
+        android:text="@string/view_bookings"
         android:layout_marginTop="16dp" />
 
     <Button
         android:id="@+id/btnDrivers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Manage Drivers"
+        android:text="@string/manage_drivers"
         android:layout_marginTop="8dp" />
 
 </LinearLayout>

@@ -11,27 +11,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TaxiGeo">
-        <activity
-            android:name="bottom_nav_menu"
-            android:exported="false" />
+
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
+
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:label="Taxi Geo"
+            android:label="@string/app_name"
             android:theme="@style/Theme.TaxiGeo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="Taxi Geo"
+            android:label="@string/app_name"
             android:theme="@style/Theme.TaxiGeo" />
     </application>
 
